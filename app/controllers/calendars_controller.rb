@@ -2,20 +2,20 @@ class CalendarsController < ApplicationController
 
   # １週間のカレンダーと予定が表示されるページ
   def index
-    getWeek
-    @plan = Plan.new
+    getWeek #21行目のメソッドが実行される
+    @plan = Plan.new #プランモデルにデータを追加する空箱(.newメソッド)を用意している　@planを初期化するイメージ
   end
 
   # 予定の保存
   def create
-    Plan.create(plan_params)
-    redirect_to action: :index
+    Plan.create(plan_params) #かっこ内のplan_paramsはストロングパラメータにこのモデルにこの列名のものを追加するけど良い？と確認している 
+    redirect_to action: :index #indexアクションを実行する
   end
 
   private
 
   def plan_params
-    params.require(:calendars).permit(:date, :plan)
+    params.require(:plan).permit(:date, :plan) #paramsは送られてきたデータが格納されている
   end
 
   def getWeek
