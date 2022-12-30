@@ -2,8 +2,10 @@ class CalendarsController < ApplicationController
 
   # １週間のカレンダーと予定が表示されるページ
   def index
-    getWeek #21行目のメソッドが実行される
+
+    get_week #21行目のメソッドが実行される
     @plan = Plan.new #プランモデルにデータを追加する空箱(.newメソッド)を用意している　@planを初期化するイメージ
+
   end
 
   # 予定の保存
@@ -18,7 +20,7 @@ class CalendarsController < ApplicationController
     params.require(:plan).permit(:date, :plan) #paramsは送られてきたデータが格納されている
   end
 
-  def getWeek
+  def get_week
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
 
     # Dateオブジェクトは、日付を保持しています。下記のように`.today.day`とすると、今日の日付を取得できます。
@@ -41,7 +43,9 @@ class CalendarsController < ApplicationController
         wday_num = wday_num - 7
       end
 
+
       days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day,:plans => today_plans,:wday => wdays[wday_num] }
+
       @week_days.push(days)
       
     end
