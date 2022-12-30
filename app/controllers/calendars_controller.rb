@@ -27,15 +27,23 @@ class CalendarsController < ApplicationController
 
     @week_days = []
 
-    plans = Plan.where(date: @todays_date..@todays_date + 6)
-
+    plans = Plan.where(date: @todays_date..@todays_date + 6)#Planテーブル内の値をカッコの条件をもとに取得する　..は〜を表す
+    
+    
     7.times do |x|
       today_plans = []
-      plans.each do |plan|
-        today_plans.push(plan.plan) if plan.date == @todays_date + x
+      plans.each do |plan| #ブロック変数
+        today_plans.push(plan.plan) if plan.date == @todays_date + x #push()は配列に値を追加する　(ブロック変数.カラム名)  Trueなら実行される内容if条件　plan(ブロック変数).date(カラム名) Falseの場合は何もしない
       end
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans}
+      wday_num = Date.today.wday + x
+      
+      if 6 < wday_num
+        wday_num = wday_num - 7
+      end
+
+      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day,:plans => today_plans,:wday => wdays[wday_num] }
       @week_days.push(days)
+      
     end
 
   end
