@@ -43,40 +43,10 @@ class CalendarsController < ApplicationController
         wday_num = wday_num - 7
       end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      days = { month : (@todays_date + x).month, date : (@todays_date+x).day,plans : today_plans,wday : wdays[wday_num] }
-=======
 
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day,:plans => today_plans,:wday => wdays[wday_num] }
-
->>>>>>> 15d70472b1cf1912a3dc0e8743f9b19ebcdeeade
-=======
-
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day,:plans => today_plans,:wday => wdays[wday_num] }
-
->>>>>>> 15d70472b1cf1912a3dc0e8743f9b19ebcdeeade
-=======
-
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day,:plans => today_plans,:wday => wdays[wday_num] }
-
->>>>>>> 15d70472b1cf1912a3dc0e8743f9b19ebcdeeade
-=======
-
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day,:plans => today_plans,:wday => wdays[wday_num] }
-
->>>>>>> 15d70472b1cf1912a3dc0e8743f9b19ebcdeeade
-=======
-
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day,:plans => today_plans,:wday => wdays[wday_num] }
-
->>>>>>> 15d70472b1cf1912a3dc0e8743f9b19ebcdeeade
+      days = { month: (@todays_date + x).month, date: (@todays_date+x).day,plans: today_plans,wday: wdays[wday_num] }
       @week_days.push(days)
       
     end
-
   end
 end
