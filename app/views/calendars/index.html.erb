@@ -1,16 +1,17 @@
 <%= form_with model: @plan, url: calendars_path, class: 'form' do |f| %>
-    <%= f.label :日付を選択, class: 'lavel' %>
-    <%= f.date_field :date, class: 'date-select' %>
-    <%= f.label :予定を入力, class: 'lavel' %>
+    <%= f.label :日付を選択, class: 'lavel' %> <!--#クラスはcssに指定するためにつけている-->
+    <%= f.date_field :date, class: 'date-select' %><!--#日付け情報の入力を求める際に使用するヘルパーメソッド-->
+    <%= f.label :予定を入力, class: 'lavel' %> 
+
     <%= f.text_field :plan, class: 'text-input' %>
-    <%= f.submit '保存' %>
+    <%= f.submit '保存' %> <!--#これをユーザーがクリックしたら、データが保存されるヘルパーメソッド-->
   <% end %>
 
   <div class='calendar'>
     <% @week_days.each do |day| %>
       <div class='item'>
         <div class='date'>
-          <% day[:month] %>/<% day[:date] %>
+          <%= day[:month] %>/<%= day[:date] %><%=  day[:wday]%>
         </div>
         <ul class='content'>
         <% if day[:plans].length != 0 %>
@@ -20,5 +21,4 @@
         <% end %>
         </ul>
       </div>
-    <% end %>
-  </div>
+  <% end %>
